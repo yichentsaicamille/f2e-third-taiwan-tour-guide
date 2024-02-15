@@ -1,14 +1,33 @@
 {
-  "name": "f2e-third-taiwan-tour-guide",
+  "name": "f2e-4rd-scrum-tutorial",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/lodash": "^4.14.191",
+    "@types/node": "^16.18.10",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "@types/react-router-dom": "^5.3.3",
+    "axios": "^1.2.2",
+    "bootstrap": "5.2.3",
+    "framer-motion": "^8.2.4",
+    "jssha": "^3.3.0",
+    "localforage": "^1.10.0",
+    "lodash": "^4.17.21",
+    "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
+    "sass": "^1.57.1",
+    "sort-by": "^1.2.0",
+    "styled-components": "^6.0.8",
+    "swiper": "^8.4.6",
+    "typescript": "^4.9.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -34,5 +53,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^2.1.4",
+    "prettier": "^3.0.3"
   }
 }
