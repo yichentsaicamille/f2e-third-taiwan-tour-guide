@@ -1,26 +1,63 @@
-import { lazy, Suspense } from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import * as constants from './constants/constants';
+import { lazy, Suspense, useEffect, useState } from "react";
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+  Navigate,
+} from "react-router-dom";
+import * as Types from "./AppTypes";
+import * as constants from "./constants/constants";
 
-const Home = lazy(() => import('./pages/Home'));
+const Home = lazy(() => import("./pages/Home"));
 
-const browserRouter = [
+const initRoutes: Types.Routes[] = [
   {
-    path: constants.HOME,
-    element: (
-      <>
-        <Suspense fallback={constants.FALLBACK_MESSAGE}>
-          <Home />
-        </Suspense>
-      </>
+    component: (
+      <Suspense fallback={constants.FALLBACK_MESSAGE}>
+        <Home />
+      </Suspense>
     ),
+    path: constants.HOME,
   },
 ];
 
-const router = createBrowserRouter(browserRouter);
+const routes: Types.Routes[] = [];
 
-function App() {
-  return <RouterProvider router={router} />;
-}
+initRoutes.forEach((initRoute) => {
+  routes.push(initRoute);
+});
+
+const App = () => {
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+
+  const onUrlChange = (location: Location) => {
+    setIsNavbarVisible(location.pathname !== "/componentTester");
+  };
+
+  return (
+    <Router>
+      <ListenUrl onUrlChange={onUrlChange} />
+      {/* {isNavbarVisible && <NavBar />} */}
+      <Routes>
+        {routes.map((route) => (
+          <Route path={route.path} key={route.path} element={route.component} />
+        ))}
+        <Route path="*" element={<Navigate to={constants.HOME} replace />} />
+      </Routes>
+    </Router>
+  );
+};
+
+const ListenUrl = (props: any) => {
+  const location = useLocation();
+  const { onUrlChange } = props;
+
+  useEffect(() => {
+    onUrlChange(location);
+  }, [location.pathname]);
+
+  return <></>;
+};
 
 export default App;
