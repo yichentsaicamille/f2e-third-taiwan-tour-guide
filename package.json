@@ -54,6 +54,26 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "moduleNameMapper": {
+      "@/(.*)$": "<rootDir>/src/$1"
+    },
+    "moduleFileExtensions": [
+      "web.js",
+      "js",
+      "web.ts",
+      "ts",
+      "web.tsx",
+      "tsx",
+      "json",
+      "web.jsx",
+      "jsx",
+      "node"
+    ]
+  },
   "devDependencies": {
     "babel-plugin-styled-components": "^2.1.4",
     "prettier": "^3.0.3"

@@ -1,3 +1,5 @@
+import SideBar from "./components/sideBar/SideBar";
+import ViewLayout from "./components/viewLayout/ViewLayout";
 import { lazy, Suspense, useEffect, useState } from "react";
 import {
   HashRouter as Router,
@@ -29,22 +31,28 @@ initRoutes.forEach((initRoute) => {
 });
 
 const App = () => {
-  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+  const [isSideBarVisible, setIsSideBarVisible] = useState(true);
 
   const onUrlChange = (location: Location) => {
-    setIsNavbarVisible(location.pathname !== "/componentTester");
+    setIsSideBarVisible(location.pathname !== "/componentTester");
   };
 
   return (
     <Router>
-      <ListenUrl onUrlChange={onUrlChange} />
-      {/* {isNavbarVisible && <NavBar />} */}
-      <Routes>
-        {routes.map((route) => (
-          <Route path={route.path} key={route.path} element={route.component} />
-        ))}
-        <Route path="*" element={<Navigate to={constants.HOME} replace />} />
-      </Routes>
+      <ViewLayout>
+        <ListenUrl onUrlChange={onUrlChange} />
+        {isSideBarVisible && <SideBar />}
+        <Routes>
+          {routes.map((route) => (
+            <Route
+              path={route.path}
+              key={route.path}
+              element={route.component}
+            />
+          ))}
+          <Route path="*" element={<Navigate to={constants.HOME} replace />} />
+        </Routes>
+      </ViewLayout>
     </Router>
   );
 };

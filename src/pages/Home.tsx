@@ -1,14 +1,8 @@
-import styled from "styled-components/macro";
+import type * as Types from "./HomeTypes";
+import * as Atoms from "./HomeAtoms";
 
-const Home = (props: any) => {
-  const { className, style } = props;
-  return (
-    <Container style={style} className={className}>
-      Hello
-    </Container>
-  );
+const Home = () => {
+  return <></>;
 };
-
-const Container = styled.section``;
 
 export default Home;
